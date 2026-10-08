@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+
+<title>FITZONE | موقع ممارسة الرياضة</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#07111f;
+    --bg2:#0b1728;
+    --card:rgba(16,31,52,.78);
+    --card2:rgba(21,41,67,.85);
+    --blue:#19a9ff;
+    --cyan:#35d6ff;
+    --green:#20d69a;
+    --orange:#ffae35;
+    --red:#ff5268;
+    --purple:#9b6cff;
+    --text:#f4f8ff;
+    --muted:#9caec5;
+    --border:rgba(255,255,255,.09);
+    --shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+body{
+    font-family:Arial,"Segoe UI",Tahoma,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(25,169,255,.13),transparent 28%),
+        radial-gradient(circle at 90% 30%,rgba(32,214,154,.09),transparent 25%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+button,
+select,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(18px);
+    background:rgba(7,17,31,.82);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+    box-shadow:0 8px 25px rgba(25,169,255,.25);
+}
+
+.nav-links{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.nav-links button{
+    border:0;
+    background:transparent;
+    color:var(--muted);
+    padding:10px 15px;
+    border-radius:12px;
+    transition:.25s;
+}
+
+.nav-links button:hover,
+.nav-links button.active{
+    color:white;
+    background:rgba(25,169,255,.12);
+}
+
+/* ===== GENERAL ===== */
+
+.container{
+    width:min(1200px,calc(100% - 30px));
+    margin:auto;
+}
+
+section{
+    padding:65px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:32px;
+    margin-bottom:9px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:50px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(25,169,255,.1);
+    border:1px solid rgba(25,169,255,.25);
+    color:var(--cyan);
+    padding:9px 15px;
+    border-radius:999px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(42px,6vw,76px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.9;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:28px;
+}
+
+.primary-btn,
+.secondary-btn{
+    border:0;
+    border-radius:14px;
+    padding:14px 23px;
+    font-weight:bold;
+    transition:.25s;
+}
+
+.primary-btn{
+    color:white;
+    background:linear-gradient(135deg,var(--blue),#0879ff);
+    box-shadow:0 12px 30px rgba(25,169,255,.2);
+}
+
+.secondary-btn{
+    color:white;
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--border);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+    transform:translateY(-3px);
+}
+
+.hero-card{
+    min-height:420px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    background:linear-gradient(145deg,rgba(25,169,255,.1),rgba(32,214,154,.04)),var(--card);
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-circle{
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    border:20px solid rgba(25,169,255,.15);
+    border-top-color:var(--cyan);
+    border-right-color:var(--green);
+    display:grid;
+    place-items:center;
+    font-size:90px;
+    animation:rotate 8s linear infinite;
+}
+
+@keyframes rotate{
+    to{transform:rotate(360deg)}
+}
+
+.hero-stats{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    right:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.mini-stat{
+    background:rgba(7,17,31,.7);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:14px;
+    text-align:center;
+}
+
+.mini-stat strong{
+    display:block;
+    font-size:20px;
+}
+
+.mini-stat span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ===== CARDS ===== */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:25px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(25,169,255,.3);
+    box-shadow:var(--shadow);
+}
+
+.exercise-icon{
+    width:58px;
+    height:58px;
+    display:grid;
+    place-items:center;
+    border-radius:17px;
+    font-size:27px;
+    background:rgba(25,169,255,.12);
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:9px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+.card button{
+    margin-top:18px;
+    width:100%;
+}
+
+/* ===== WORKOUT ===== */
+
+.workout-panel{
+    max-width:850px;
+    margin:auto;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.workout-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.workout-top span{
+    color:var(--muted);
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    border-radius:99px;
+    background:rgba(255,255,255,.07);
+    overflow:hidden;
+    margin:18px 0 30px;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    transition:.4s;
+}
+
+.current-exercise{
+    text-align:center;
+    padding:25px 10px;
+}
+
+.current-icon{
+    font-size:65px;
+    margin-bottom:12px;
+}
+
+.current-exercise h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.current-exercise p{
+    color:var(--muted);
+}
+
+.timer{
+    font-size:80px;
+    font-weight:900;
+    text-align:center;
+    margin:25px 0;
+    font-variant-numeric:tabular-nums;
+}
+
+.timer.rest{
+    color:var(--green);
+}
+
+.timer-controls{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.timer-controls button{
+    border:0;
+    border-radius:14px;
+    padding:13px 22px;
+    color:white;
+    background:rgba(255,255,255,.07);
+}
+
+.timer-controls .start{
+    background:linear-gradient(135deg,var(--blue),#0879ff);
+}
+
+/* ===== CUSTOM WORKOUT ===== */
+
+.builder{
+    max-width:850px;
+    margin:auto;
+}
+
+.builder-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.form-group select,
+.form-group input{
+    width:100%;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+    color:white;
+    padding:13px;
+    border-radius:13px;
+    outline:none;
+}
+
+.form-group select option{
+    background:#101d2e;
+}
+
+.builder-actions{
+    margin-top:18px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* ===== STATS ===== */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat-card{
+    text-align:center;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px 15px;
+}
+
+.stat-card .number{
+    font-size:34px;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.stat-card span{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* ===== ACHIEVEMENTS ===== */
+
+.achievement{
+    position:relative;
+}
+
+.achievement.locked{
+    opacity:.5;
+}
+
+.achievement .lock{
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+
+/* ===== SCHEDULE ===== */
+
+.schedule{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+}
+
+.day{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:15px;
+    text-align:center;
+}
+
+.day h4{
+    margin-bottom:13px;
+}
+
+.day p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* ===== MODAL ===== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(600px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#0c1a2b;
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:25px;
+}
+
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.close{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:12px;
+    background:rgba(255,255,255,.07);
+    color:white;
+    font-size:20px;
+}
+
+.exercise-list{
+    display:grid;
+    gap:10px;
+}
+
+.exercise-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:15px;
+}
+
+.exercise-item small{
+    color:var(--muted);
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:35px 15px;
+    text-align:center;
+    color:var(--muted);
+}
+
+footer strong{
+    color:white;
+}
+
+/* ===== NOTIFICATION ===== */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    z-index:3000;
+    background:#102238;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:15px 20px;
+    box-shadow:var(--shadow);
+    transform:translateY(120px);
+    opacity:0;
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .schedule{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+    .nav-inner{
+        flex-direction:column;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .hero{
+        padding-top:35px;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .hero-card{
+        min-height:340px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .builder-grid{
+        grid-template-columns:1fr;
+    }
+
+    .schedule{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .timer{
+        font-size:58px;
+    }
+
+    .hero-stats{
+        position:static;
+        margin:15px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+    <div class="nav-inner">
+
+```
+    <div class="logo">
+        <div class="logo-icon">🏃</div>
+        <span>FITZONE</span>
+    </div>
+
+    <div class="nav-links">
+        <button class="active" onclick="scrollToSection('home')">الرئيسية</button>
+        <button onclick="scrollToSection('exercises')">التمارين</button>
+        <button onclick="scrollToSection('workout')">ابدأ التمرين</button>
+        <button onclick="scrollToSection('progress')">تقدمي</button>
+    </div>
+
+</div>
+```
+
+</nav>
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+    <div class="container">
+
+```
+    <div class="hero-grid">
+
+        <div>
+            <div class="badge">🔥 ابدأ اليوم وكن أكثر نشاطًا</div>
+
+            <h1>
+                تحرك أكثر<br>
+                <span class="gradient-text">وعش بنشاط</span>
+            </h1>
+
+            <p>
+                منصة بسيطة لمساعدتك على تنظيم تمارينك،
+                متابعة وقت التدريب وبناء عادة رياضية منتظمة
+                بطريقة ممتعة وآمنة.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="scrollToSection('exercises')">
+                    🚀 ابدأ الآن
+                </button>
+
+                <button class="secondary-btn" onclick="scrollToSection('workout')">
+                    ⏱️ مؤقت التمرين
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-card">
+
+            <div class="hero-circle">🏋️</div>
+
+            <div class="hero-stats">
+
+                <div class="mini-stat">
+                    <strong id="heroMinutes">0</strong>
+                    <span>دقيقة</span>
+                </div>
+
+                <div class="mini-stat">
+                    <strong id="heroWorkouts">0</strong>
+                    <span>تمرين</span>
+                </div>
+
+                <div class="mini-stat">
+                    <strong id="heroDays">0</strong>
+                    <span>أيام</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- EXERCISES -->
+
+<section id="exercises">
+
+```
+<div class="container">
+
+    <div class="section-title">
+        <h2>🏋️ اختر نوع التمرين</h2>
+        <p>اختر الفئة التي تريد التدرب عليها</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="exercise-icon">💪</div>
+            <h3>تمارين القوة</h3>
+            <p>تمارين عامة لتطوير القوة والحركة باستخدام وزن الجسم.</p>
+            <button class="secondary-btn" onclick="openCategory('strength')">
+                عرض التمارين
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="exercise-icon">🏃</div>
+            <h3>الكارديو</h3>
+            <p>تمارين حركية تساعدك على رفع مستوى نشاطك وتحسين التحمل.</p>
+            <button class="secondary-btn" onclick="openCategory('cardio')">
+                عرض التمارين
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="exercise-icon">🦵</div>
+            <h3>الأرجل</h3>
+            <p>مجموعة من التمارين التي تركز على حركة وتقوية الجزء السفلي.</p>
+            <button class="secondary-btn" onclick="openCategory('legs')">
+                عرض التمارين
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="exercise-icon">🔥</div>
+            <h3>البطن والجذع</h3>
+            <p>تمارين بسيطة لتحريك عضلات الجذع والمحافظة على نشاط الجسم.</p>
+            <button class="secondary-btn" onclick="openCategory('core')">
+                عرض التمارين
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="exercise-icon">🧘</div>
+            <h3>المرونة</h3>
+            <p>تمارين تمدد وحركة مناسبة لبداية أو نهاية جلسة التدريب.</p>
+            <button class="secondary-btn" onclick="openCategory('flexibility')">
+                عرض التمارين
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="exercise-icon">🏠</div>
+            <h3>تمارين منزلية</h3>
+            <p>روتين بسيط يمكنك القيام به في المنزل دون الحاجة إلى أجهزة.</p>
+            <button class="secondary-btn" onclick="openCategory('home')">
+                عرض التمارين
+            </button>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- WORKOUT -->
+
+<section id="workout">
+
+```
+<div class="container">
+
+    <div class="section-title">
+        <h2>⏱️ جلسة التمرين</h2>
+        <p>اضبط الوقت وابدأ جلستك</p>
+    </div>
+
+    <div class="workout-panel">
+
+        <div class="workout-top">
+            <div>
+                <strong id="workoutTitle">تمرين مخصص</strong>
+                <br>
+                <span id="exerciseCounter">التمرين 0 من 0</span>
+            </div>
+
+            <span id="phaseText">جاهز</span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="current-exercise">
+
+            <div class="current-icon" id="currentIcon">🏃</div>
+
+            <h3 id="currentName">اختر تمرينًا للبدء</h3>
+
+            <p id="currentDescription">
+                يمكنك اختيار أحد التمارين من الأعلى أو إنشاء جلسة مخصصة.
+            </p>
+
+        </div>
+
+        <div class="timer" id="timer">
+            00:30
+        </div>
+
+        <div class="timer-controls">
+
+            <button class="start" onclick="startTimer()">▶️ بدء</button>
+
+            <button onclick="pauseTimer()">⏸️ إيقاف</button>
+
+            <button onclick="resetTimer()">🔄 إعادة</button>
+
+            <button onclick="skipExercise()">⏭️ التالي</button>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- CUSTOM BUILDER -->
+
+<section id="builder">
+
+```
+<div class="container">
+
+    <div class="section-title">
+        <h2>⚙️ إنشاء جلسة خاصة</h2>
+        <p>اختر مدة التمرين والراحة وعدد الجولات</p>
+    </div>
+
+    <div class="builder">
+
+        <div class="card">
+
+            <div class="builder-grid">
+
+                <div class="form-group">
+                    <label>نوع التمرين</label>
+
+                    <select id="customExercise">
+
+                        <option value="jumping">🏃 Jumping Jacks</option>
+                        <option value="squats">🦵 Squats</option>
+                        <option value="lunges">🦵 Lunges</option>
+                        <option value="pushups">💪 Push-ups</option>
+                        <option value="plank">🔥 Plank</option>
+                        <option value="mountain">🏃 Mountain Climbers</option>
+                        <option value="stretch">🧘 Stretching</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>مدة التمرين بالثواني</label>
+
+                    <input
+                        id="exerciseSeconds"
+                        type="number"
+                        min="5"
+                        max="600"
+                        value="30">
+                </div>
+
+                <div class="form-group">
+                    <label>مدة الراحة بالثواني</label>
+
+                    <input
+                        id="restSeconds"
+                        type="number"
+                        min="0"
+                        max="300"
+                        value="15">
+                </div>
+
+                <div class="form-group">
+                    <label>عدد الجولات</label>
+
+                    <input
+                        id="rounds"
+                        type="number"
+                        min="1"
+                        max="20"
+                        value="5">
+                </div>
+
+            </div>
+
+            <div class="builder-actions">
+
+                <button class="primary-btn" onclick="createWorkout()">
+                    💪 إنشاء الجلسة
+                </button>
+
+                <button class="secondary-btn" onclick="scrollToSection('workout')">
+                    ⏱️ الذهاب للمؤقت
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- PROGRESS -->
+
+<section id="progress">
+
+```
+<div class="container">
+
+    <div class="section-title">
+        <h2>📊 تقدمك</h2>
+        <p>تابع نشاطك الرياضي</p>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="number" id="totalWorkouts">0</div>
+            <span>جلسات التمرين</span>
+        </div>
+
+        <div class="stat-card">
+            <div class="number" id="totalMinutes">0</div>
+            <span>الدقائق</span>
+        </div>
+
+        <div class="stat-card">
+            <div class="number" id="activeDays">0</div>
+            <span>أيام النشاط</span>
+        </div>
+
+        <div class="stat-card">
+            <div class="number" id="streak">0</div>
+            <span>أيام متتالية</span>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievements">
+
+```
+<div class="container">
+
+    <div class="section-title">
+        <h2>🏆 الإنجازات</h2>
+        <p>استمر في التدريب وافتح الإنجازات</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card achievement" id="achievement1">
+            <div class="exercise-icon">🥇</div>
+            <h3>البداية</h3>
+            <p>أكمل أول جلسة تدريب.</p>
+        </div>
+
+        <div class="card achievement locked" id="achievement2">
+            <span class="lock">🔒</span>
+            <div class="exercise-icon">🔥</div>
+            <h3>النشاط</h3>
+            <p>أكمل 5 جلسات تدريب.</p>
+        </div>
+
+        <div class="card achievement locked" id="achievement3">
+            <span class="lock">🔒</span>
+            <div class="exercise-icon">⏱️</div>
+            <h3>ساعة نشاط</h3>
+            <p>اجمع 60 دقيقة من التدريب.</p>
+        </div>
+
+        <div class="card achievement locked" id="achievement4">
+            <span class="lock">🔒</span>
+            <div class="exercise-icon">🚀</div>
+            <h3>الاستمرارية</h3>
+            <p>حافظ على النشاط لعدة أيام.</p>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- WEEK SCHEDULE -->
+
+<section id="schedule">
+
+```
+<div class="container">
+
+    <div class="section-title">
+        <h2>📅 برنامج أسبوعي</h2>
+        <p>مثال لتنظيم النشاط خلال الأسبوع</p>
+    </div>
+
+    <div class="schedule">
+
+        <div class="day">
+            <h4>الأحد</h4>
+            <p>💪 قوة<br>20 - 30 دقيقة</p>
+        </div>
+
+        <div class="day">
+            <h4>الإثنين</h4>
+            <p>🏃 كارديو<br>20 - 30 دقيقة</p>
+        </div>
+
+        <div class="day">
+            <h4>الثلاثاء</h4>
+            <p>🦵 أرجل<br>20 - 30 دقيقة</p>
+        </div>
+
+        <div class="day">
+            <h4>الأربعاء</h4>
+            <p>🧘 مرونة<br>15 - 20 دقيقة</p>
+        </div>
+
+        <div class="day">
+            <h4>الخميس</h4>
+            <p>🔥 جذع<br>20 - 30 دقيقة</p>
+        </div>
+
+        <div class="day">
+            <h4>الجمعة</h4>
+            <p>🚶 نشاط خفيف<br>حسب الطاقة</p>
+        </div>
+
+        <div class="day">
+            <h4>السبت</h4>
+            <p>🌿 راحة<br>استشفاء</p>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<footer>
+    <strong>FITZONE 🏃</strong>
+    <br><br>
+    موقعك البسيط لتنظيم ممارسة الرياضة والنشاط.
+</footer>
+
+<!-- MODAL -->
+
+<div class="modal" id="exerciseModal">
+
+```
+<div class="modal-box">
+
+    <div class="modal-header">
+
+        <div>
+            <h2 id="modalTitle">التمارين</h2>
+            <p id="modalSubtitle" style="color:var(--muted);margin-top:5px;"></p>
+        </div>
+
+        <button class="close" onclick="closeModal()">×</button>
+
+    </div>
+
+    <div class="exercise-list" id="exerciseList"></div>
+
+</div>
+```
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const exerciseData = {
+
+    strength:{
+        title:"💪 تمارين القوة",
+        subtitle:"تمارين عامة باستخدام وزن الجسم",
+        exercises:[
+            ["💪","Push-ups","30 ثانية","تمرين للجزء العلوي من الجسم"],
+            ["🪑","Wall Sit","30 ثانية","الثبات بوضعية آمنة ومريحة"],
+            ["🔥","Plank","30 ثانية","تمرين ثبات للجذع"],
+            ["🦵","Squats","30 ثانية","حركة القرفصاء بوزن الجسم"]
+        ]
+    },
+
+    cardio:{
+        title:"🏃 تمارين الكارديو",
+        subtitle:"تمارين حركية لزيادة النشاط",
+        exercises:[
+            ["🏃","March in Place","30 ثانية","المشي في المكان"],
+            ["⚡","Jumping Jacks","30 ثانية","حركة نشطة للجسم كاملًا"],
+            ["🏃","High Knees","30 ثانية","رفع الركبتين بالتبادل"],
+            ["🚶","Fast Steps","30 ثانية","خطوات سريعة في المكان"]
+        ]
+    },
+
+    legs:{
+        title:"🦵 تمارين الأرجل",
+        subtitle:"حركات للجزء السفلي من الجسم",
+        exercises:[
+            ["🦵","Squats","30 ثانية","القرفصاء بوزن الجسم"],
+            ["🦵","Reverse Lunges","30 ثانية","اندفاع خلفي بالتبادل"],
+            ["🪑","Wall Sit","30 ثانية","الثبات على الحائط"],
+            ["🦶","Calf Raises","30 ثانية","رفع الكعبين"]
+        ]
+    },
+
+    core:{
+        title:"🔥 تمارين الجذع",
+        subtitle:"تمارين حركة وثبات للجذع",
+        exercises:[
+            ["🔥","Plank","30 ثانية","الثبات بوضعية مستقيمة"],
+            ["🔥","Dead Bug","30 ثانية","حركة متحكم بها للجذع"],
+            ["🏃","Mountain Climbers","30 ثانية","حركة ديناميكية للجسم"],
+            ["🔥","Bird Dog","30 ثانية","تمرين توازن وثبات"]
+        ]
+    },
+
+    flexibility:{
+        title:"🧘 تمارين المرونة",
+        subtitle:"حركات تمدد وحركة",
+        exercises:[
+            ["🧘","Shoulder Stretch","30 ثانية","تمدد للكتفين"],
+            ["🧘","Hamstring Stretch","30 ثانية","تمدد خلف الفخذ"],
+            ["🧘","Quad Stretch","30 ثانية","تمدد مقدمة الفخذ"],
+            ["🧘","Side Stretch","30 ثانية","تمدد جانبي للجسم"]
+        ]
+    },
+
+    home:{
+        title:"🏠 تمارين منزلية",
+        subtitle:"جلسة بسيطة داخل المنزل",
+        exercises:[
+            ["🏃","March in Place","30 ثانية","المشي في المكان"],
+            ["🦵","Squats","30 ثانية","القرفصاء"],
+            ["💪","Push-ups","30 ثانية","تمرين الضغط"],
+            ["🔥","Plank","30 ثانية","الثبات"],
+            ["🧘","Stretching","30 ثانية","تمدد خفيف"]
+        ]
+    }
+
+};
+
+/* =========================================================
+   CUSTOM WORKOUT DATA
+========================================================= */
+
+const customNames = {
+    jumping:{
+        icon:"🏃",
+        name:"Jumping Jacks",
+        description:"حركة نشطة للجسم كاملًا"
+    },
+
+    squats:{
+        icon:"🦵",
+        name:"Squats",
+        description:"تمرين قرفصاء باستخدام وزن الجسم"
+    },
+
+    lunges:{
+        icon:"🦵",
+        name:"Lunges",
+        description:"اندفاع بالتبادل مع التحكم بالحركة"
+    },
+
+    pushups:{
+        icon:"💪",
+        name:"Push-ups",
+        description:"تمرين للجزء العلوي باستخدام وزن الجسم"
+    },
+
+    plank:{
+        icon:"🔥",
+        name:"Plank",
+        description:"تمرين ثبات للجذع"
+    },
+
+    mountain:{
+        icon:"🏃",
+        name:"Mountain Climbers",
+        description:"حركة ديناميكية للجسم"
+    },
+
+    stretch:{
+        icon:"🧘",
+        name:"Stretching",
+        description:"تمارين تمدد وحركة"
+    }
+};
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let workout = [];
+
+let currentIndex = 0;
+
+let timerSeconds = 30;
+
+let timerInterval = null;
+
+let running = false;
+
+let isRest = false;
+
+let restDuration = 15;
+
+let stats = JSON.parse(
+    localStorage.getItem("fitzoneStats")
+) || {
+    workouts:0,
+    minutes:0,
+    days:[],
+    streak:0,
+    lastDay:null
+};
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollToSection(id){
+
+    const element = document.getElementById(id);
+
+    if(element){
+        element.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    }
+
+}
+
+/* =========================================================
+   CATEGORY MODAL
+========================================================= */
+
+function openCategory(category){
+
+    const data = exerciseData[category];
+
+    if(!data) return;
+
+    document.getElementById("modalTitle").textContent =
+        data.title;
+
+    document.getElementById("modalSubtitle").textContent =
+        data.subtitle;
+
+    const list =
+        document.getElementById("exerciseList");
+
+    list.innerHTML = "";
+
+    data.exercises.forEach((exercise,index)=>{
+
+        const item =
+            document.createElement("div");
+
+        item.className = "exercise-item";
+
+        item.innerHTML = `
+            <div style="display:flex;align-items:center;gap:12px;">
+                <span style="font-size:30px">${exercise[0]}</span>
+                <div>
+                    <strong>${exercise[1]}</strong>
+                    <br>
+                    <small>${exercise[3]}</small>
+                </div>
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="startCategoryWorkout('${category}',${index})">
+                ابدأ
+            </button>
+        `;
+
+        list.appendChild(item);
+
+    });
+
+    document
+        .getElementById("exerciseModal")
+        .classList.add("show");
+
+}
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(){
+
+    document
+        .getElementById("exerciseModal")
+        .classList.remove("show");
+
+}
+
+document
+    .getElementById("exerciseModal")
+    .addEventListener("click",function(e){
+
+        if(e.target === this){
+            closeModal();
+        }
+
+    });
+
+/* =========================================================
+   START CATEGORY WORKOUT
+========================================================= */
+
+function startCategoryWorkout(category,startIndex){
+
+    const data = exerciseData[category];
+
+    workout = data.exercises.map(item=>({
+
+        icon:item[0],
+        name:item[1],
+        seconds:parseInt(item[2]),
+        description:item[3]
+
+    }));
+
+    currentIndex = startIndex;
+
+    closeModal();
+
+    scrollToSection("workout");
+
+    prepareExercise();
+
+    showToast("💪 تم تجهيز جلسة التمرين");
+
+}
+
+/* =========================================================
+   CREATE CUSTOM WORKOUT
+========================================================= */
+
+function createWorkout(){
+
+    const type =
+        document.getElementById("customExercise").value;
+
+    const seconds =
+        Math.max(
+            5,
+            parseInt(
+                document.getElementById("exerciseSeconds").value
+            ) || 30
+        );
+
+    restDuration =
+        Math.max(
+            0,
+            parseInt(
+                document.getElementById("restSeconds").value
+            ) || 15
+        );
+
+    const rounds =
+        Math.min(
+            20,
+            Math.max(
+                1,
+                parseInt(
+                    document.getElementById("rounds").value
+                ) || 5
+            )
+        );
+
+    const info = customNames[type];
+
+    workout = [];
+
+    for(let i=0;i<rounds;i++){
+
+        workout.push({
+
+            icon:info.icon,
+
+            name:info.name,
+
+            seconds:seconds,
+
+            description:info.description
+
+        });
+
+    }
+
+    currentIndex = 0;
+
+    isRest = false;
+
+    resetTimer();
+
+    prepareExercise();
+
+    scrollToSection("workout");
+
+    showToast("🚀 تم إنشاء جلسة جديدة");
+
+}
+
+/* =========================================================
+   PREPARE EXERCISE
+========================================================= */
+
+function prepareExercise(){
+
+    if(!workout.length){
+
+        document.getElementById("currentName").textContent =
+            "اختر تمرينًا للبدء";
+
+        document.getElementById("currentIcon").textContent =
+            "🏃";
+
+        return;
+
+    }
+
+    const item = workout[currentIndex];
+
+    timerSeconds = isRest
+        ? restDuration
+        : item.seconds;
+
+    document.getElementById("currentIcon").textContent =
+        isRest ? "😮‍💨" : item.icon;
+
+    document.getElementById("currentName").textContent =
+        isRest ? "راحة" : item.name;
+
+    document.getElementById("currentDescription").textContent =
+        isRest
+        ? "خذ وقتًا للراحة والاستعداد للجولة التالية."
+        : item.description;
+
+    document.getElementById("exerciseCounter").textContent =
+        `التمرين ${currentIndex + 1} من ${workout.length}`;
+
+    document.getElementById("phaseText").textContent =
+        isRest ? "وقت الراحة" : "وقت التمرين";
+
+    document.getElementById("workoutTitle").textContent =
+        isRest ? "استراحة" : "جلسة التمرين";
+
+    updateTimerDisplay();
+
+    updateProgress();
+
+}
+
+/* =========================================================
+   TIMER DISPLAY
+========================================================= */
+
+function updateTimerDisplay(){
+
+    const minutes =
+        Math.floor(timerSeconds / 60)
+        .toString()
+        .padStart(2,"0");
+
+    const seconds =
+        (timerSeconds % 60)
+        .toString()
+        .padStart(2,"0");
+
+    const timer =
+        document.getElementById("timer");
+
+    timer.textContent =
+        `${minutes}:${seconds}`;
+
+    timer.classList.toggle("rest",isRest);
+
+}
+
+/* =========================================================
+   START TIMER
+========================================================= */
+
+function startTimer(){
+
+    if(!workout.length){
+
+        showToast("⚠️ اختر تمرينًا أولًا");
+
+        return;
+
+    }
+
+    if(running) return;
+
+    running = true;
+
+    timerInterval =
+        setInterval(()=>{
+
+            timerSeconds--;
+
+            updateTimerDisplay();
+
+            if(timerSeconds <= 0){
+
+                finishCurrentPhase();
+
+            }
+
+        },1000);
+
+}
+
+/* =========================================================
+   PAUSE
+========================================================= */
+
+function pauseTimer(){
+
+    running = false;
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    showToast("⏸️ تم إيقاف المؤقت");
+
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetTimer(){
+
+    running = false;
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    isRest = false;
+
+    if(workout.length){
+
+        timerSeconds =
+            workout[currentIndex]?.seconds || 30;
+
+    }else{
+
+        timerSeconds = 30;
+
+    }
+
+    updateTimerDisplay();
+
+}
+
+/* =========================================================
+   FINISH PHASE
+========================================================= */
+
+function finishCurrentPhase(){
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    running = false;
+
+    beep();
+
+    if(isRest){
+
+        isRest = false;
+
+        currentIndex++;
+
+        if(currentIndex >= workout.length){
+
+            finishWorkout();
+
+            return;
+
+        }
+
+        prepareExercise();
+
+        showToast("💪 حان وقت التمرين");
+
+    }else{
+
+        if(restDuration > 0){
+
+            isRest = true;
+
+            prepareExercise();
+
+            showToast("😮‍💨 وقت الراحة");
+
+        }else{
+
+            currentIndex++;
+
+            if(currentIndex >= workout.length){
+
+                finishWorkout();
+
+            }else{
+
+                prepareExercise();
+
+                showToast("💪 التمرين التالي");
+
+            }
+
+        }
+
+    }
+
+}
+
+/* =========================================================
+   SKIP
+========================================================= */
+
+function skipExercise(){
+
+    if(!workout.length){
+
+        showToast("⚠️ لا توجد جلسة");
+
+        return;
+
+    }
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    running = false;
+
+    isRest = false;
+
+    currentIndex++;
+
+    if(currentIndex >= workout.length){
+
+        finishWorkout();
+
+        return;
+
+    }
+
+    prepareExercise();
+
+}
+
+/* =========================================================
+   FINISH WORKOUT
+========================================================= */
+
+function finishWorkout(){
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    running = false;
+
+    isRest = false;
+
+    currentIndex = 0;
+
+    registerWorkout();
+
+    document.getElementById("currentIcon").textContent = "🏆";
+
+    document.getElementById("currentName").textContent =
+        "أحسنت! انتهت الجلسة";
+
+    document.getElementById("currentDescription").textContent =
+        "خذ وقتك للراحة واشرب الماء واستعد لنشاطك القادم.";
+
+    document.getElementById("phaseText").textContent =
+        "اكتمل التمرين";
+
+    document.getElementById("timer").textContent =
+        "00:00";
+
+    document.getElementById("progressBar").style.width =
+        "100%";
+
+    beep();
+
+    setTimeout(beep,350);
+
+    showToast("🏆 أحسنت! تم تسجيل الجلسة");
+
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(){
+
+    if(!workout.length) return;
+
+    const percentage =
+        (currentIndex / workout.length) * 100;
+
+    document.getElementById("progressBar").style.width =
+        `${percentage}%`;
+
+}
+
+/* =========================================================
+   REGISTER STATS
+========================================================= */
+
+function registerWorkout(){
+
+    stats.workouts++;
+
+    let estimatedMinutes = 0;
+
+    workout.forEach(item=>{
+        estimatedMinutes += item.seconds;
+    });
+
+    estimatedMinutes +=
+        restDuration * Math.max(0,workout.length - 1);
+
+    stats.minutes +=
+        Math.max(
+            1,
+            Math.round(estimatedMinutes / 60)
+        );
+
+    const today =
+        new Date().toISOString().slice(0,10);
+
+    if(!stats.days.includes(today)){
+
+        stats.days.push(today);
+
+    }
+
+    updateStreak();
+
+    saveStats();
+
+    updateStatsUI();
+
+    updateAchievements();
+
+}
+
+/* =========================================================
+   STREAK
+========================================================= */
+
+function updateStreak(){
+
+    const today =
+        new Date();
+
+    today.setHours(0,0,0,0);
+
+    if(!stats.lastDay){
+
+        stats.streak = 1;
+
+        stats.lastDay =
+            today.toISOString().slice(0,10);
+
+        return;
+
+    }
+
+    const last =
+        new Date(stats.lastDay);
+
+    last.setHours(0,0,0,0);
+
+    const difference =
+        Math.round(
+            (today-last)/(1000*60*60*24)
+        );
+
+    if(difference === 0){
+
+        return;
+
+    }
+
+    if(difference === 1){
+
+        stats.streak++;
+
+    }else{
+
+        stats.streak = 1;
+
+    }
+
+    stats.lastDay =
+        today.toISOString().slice(0,10);
+
+}
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+function saveStats(){
+
+    localStorage.setItem(
+        "fitzoneStats",
+        JSON.stringify(stats)
+    );
+
+}
+
+/* =========================================================
+   UPDATE STATS UI
+========================================================= */
+
+function updateStatsUI(){
+
+    document.getElementById("totalWorkouts").textContent =
+        stats.workouts;
+
+    document.getElementById("totalMinutes").textContent =
+        stats.minutes;
+
+    document.getElementById("activeDays").textContent =
+        stats.days.length;
+
+    document.getElementById("streak").textContent =
+        stats.streak;
+
+    document.getElementById("heroMinutes").textContent =
+        stats.minutes;
+
+    document.getElementById("heroWorkouts").textContent =
+        stats.workouts;
+
+    document.getElementById("heroDays").textContent =
+        stats.days.length;
+
+}
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+function updateAchievements(){
+
+    if(stats.workouts >= 1){
+
+        unlock("achievement1");
+
+    }
+
+    if(stats.workouts >= 5){
+
+        unlock("achievement2");
+
+    }
+
+    if(stats.minutes >= 60){
+
+        unlock("achievement3");
+
+    }
+
+    if(stats.streak >= 3){
+
+        unlock("achievement4");
+
+    }
+
+}
+
+function unlock(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(!element) return;
+
+    element.classList.remove("locked");
+
+    const lock =
+        element.querySelector(".lock");
+
+    if(lock){
+
+        lock.remove();
+
+    }
+
+}
+
+/* =========================================================
+   SOUND
+========================================================= */
+
+let audioContext = null;
+
+function beep(){
+
+    try{
+
+        if(!audioContext){
+
+            audioContext =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+        }
+
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.value = 880;
+
+        gain.gain.setValueAtTime(
+            .0001,
+            audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .25,
+            audioContext.currentTime + .02
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .0001,
+            audioContext.currentTime + .45
+        );
+
+        oscillator.connect(gain);
+
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioContext.currentTime + .45
+        );
+
+    }catch(error){
+
+        console.log("Audio unavailable");
+
+    }
+
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimeout;
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimeout);
+
+    toastTimeout =
+        setTimeout(()=>{
+
+            toast.classList.remove("show");
+
+        },2500);
+
+}
+
+/* =========================================================
+   NAV ACTIVE
+========================================================= */
+
+const navButtons =
+    document.querySelectorAll(".nav-links button");
+
+window.addEventListener("scroll",()=>{
+
+    const sections =
+        ["home","exercises","workout","progress"];
+
+    let current = "home";
+
+    sections.forEach(id=>{
+
+        const section =
+            document.getElementById(id);
+
+        if(
+            section &&
+            window.scrollY >=
+            section.offsetTop - 180
+        ){
+
+            current = id;
+
+        }
+
+    });
+
+    navButtons.forEach(button=>{
+        button.classList.remove("active");
+    });
+
+    const index =
+        sections.indexOf(current);
+
+    if(index >= 0 && navButtons[index]){
+
+        navButtons[index]
+            .classList.add("active");
+
+    }
+
+});
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+========================================================= */
+
+document.addEventListener("keydown",(event)=>{
+
+    if(
+        event.target.tagName === "INPUT" ||
+        event.target.tagName === "SELECT"
+    ){
+
+        return;
+
+    }
+
+    if(event.code === "Space"){
+
+        event.preventDefault();
+
+        if(running){
+
+            pauseTimer();
+
+        }else{
+
+            startTimer();
+
+        }
+
+    }
+
+    if(event.key === "ArrowRight"){
+
+        skipExercise();
+
+    }
+
+});
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+updateStatsUI();
+
+updateAchievements();
+
+createWorkout();
+
+resetTimer();
+
+</script>
+
+</body>
+</html>
